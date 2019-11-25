@@ -1,0 +1,9 @@
+**/dist/**
+**/dev-server/**
+**/node_modules/**
+**/assets/**
+**/styles/**
+**/webpack.config.js
+**/jest.config.js
+**/babel.config.js
+**/index.html

@@ -1,0 +1,6 @@
+{
+    "test.welcome": "Bienvenue!",
+    "test.hello": "Bonjour {username}, comment ça va ?",
+    "test.signIn": "Veuillez <em>vous connecter</em> s'il vous plaît",
+    "test.apples": "Place your French {count, plural, one {apple} other {apples}} in the cart."
+}
