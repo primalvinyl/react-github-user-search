@@ -1,5 +1,9 @@
 # Github User Test
 
+## Requirements
+* [Node 10.x or greater](https://nodejs.org/en/download/)
+* NPM 6.x or greater
+
 ## Getting Started
 
 1) `npm install` to install packages.
@@ -14,5 +18,5 @@
 * Robust error handling and user notifications are not yet implemented.
 * Unit and integration test suites are basic and incomplete.
 * End to end testing is not yet implemented.
-* I used a boilerplate (I made it, so it's architecture is a little loose and based entirely on personal preference).
+* I used a boilerplate (I made it, so its architecture is a little loose and based entirely on personal preference).
 * This was developed on a Windows machine and not tested in a Mac/Linux environment. In theory there should be no compatibility issues, but please let me now if there are.
