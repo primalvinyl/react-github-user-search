@@ -61,7 +61,7 @@
     "scripts": {
         "build": "webpack --mode production",
         "build:clean": "rimraf dist",
-        "start": "start http://localhost:8080/ && webpack-dev-server --mode-development",
+        "start": "webpack-dev-server --mode-development",
         "test": "jest",
         "test:clean": "jest --clearCache",
         "lint": "./node_modules/.bin/eslint \"src/**\"",
