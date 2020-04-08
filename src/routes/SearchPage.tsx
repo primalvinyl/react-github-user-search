@@ -8,12 +8,6 @@ import { SearchType } from '../../__types__';
 import FormContainer from '../components/containers/FormContainer';
 import TableElement from '../components/presentation/TableElement';
 
-/**
- * TODO: Some tweeking in the UI
- * to allow for pulling the top or
- * bottom from the data set.
-*/
-
 const searchPageColumns = [
     {
         Header: 'Avatar',
@@ -32,7 +26,7 @@ type SearchPageProps = {
     readonly getUserListDispatcher: (data: SearchType) => void;
 };
 
-export class SearchPage extends React.Component<SearchPageProps> {
+export class SearchPage extends React.PureComponent<SearchPageProps> {
     constructor(props: SearchPageProps) {
         super(props);
     }
@@ -47,7 +41,7 @@ export class SearchPage extends React.Component<SearchPageProps> {
             <article>
                 <div className="search-page">
                     <FormContainer { ...this.props } />
-                    <TableElement columns={searchPageColumns} data={this.props.userList} />
+                    <TableElement { ...this.props } columns={searchPageColumns} data={this.props.userList} />
                 </div>
             </article>
         );

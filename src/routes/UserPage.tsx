@@ -59,7 +59,7 @@ export class UserPage extends React.Component<UserPageProps> {
         getUserDataDispatcher: (): void => {}
     }
 
-    componentDidMount(){
+    componentDidMount(): void {
         const userName = this.props.match.params.userName;
         this.props.getUserDataDispatcher(userName);
     }
@@ -79,15 +79,15 @@ export class UserPage extends React.Component<UserPageProps> {
                     </section>
                     <section className="user-followers">
                         <h2>Followers</h2>
-                        <TableElement columns={userColumns} data={ followersList } pageSize={5} />
+                        <TableElement { ...this.props } columns={userColumns} data={ followersList } pageSize={5} />
                     </section>
                     <section className="user-following">
                         <h2>Following</h2>
-                        <TableElement columns={userColumns} data={ followList } pageSize={5} />
+                        <TableElement { ...this.props } columns={userColumns} data={ followList } pageSize={5} />
                     </section>
                     <section className="user-repos">
                         <h2>Repos</h2>
-                        <TableElement columns={repoColumns} data={ repoList } pageSize={5} />
+                        <TableElement { ...this.props } columns={repoColumns} data={ repoList } pageSize={5} />
                     </section>
                 </article> 
             </div>

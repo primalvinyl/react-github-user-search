@@ -2,11 +2,23 @@ import { combineReducers } from 'redux';
 import * as Actions from '../actions';
 import * as StoreTypes from '../../__types__';
 
-const initialUserState = {};
-export function user(
+
+/* eslint-disable */
+const initialUserState = {
+    login: '',
+    created_at: '',
+    avatar_url: '',
+    repos_url: '',
+    html_url: '',
+    followers: 0,
+    following: 0,
+    public_repos: 0
+};
+/* eslint-enable */
+export const user = (
     state = initialUserState,
     action: Actions.PutUserActionType
-){
+): StoreTypes.UserType => {
     switch (action.type) {
         case Actions.PUT_USER:
             return {
@@ -19,10 +31,10 @@ export function user(
 
 
 const initialUserListState = [];
-export function userList(
+export const userList = (
     state = initialUserListState,
     action: Actions.PutUserListActionType
-){
+): StoreTypes.UserListType => {
     switch (action.type) {
         case Actions.PUT_USER_LIST:
             return [
@@ -35,10 +47,10 @@ export function userList(
 
 
 const initialFollowersListState = [];
-export function followersList(
+export const followersList = (
     state = initialFollowersListState,
     action: Actions.PutFollowersListActionType
-){
+): StoreTypes.UserListType => {
     switch (action.type) {
         case Actions.PUT_FOLLOWERS_LIST:
             return [
@@ -51,10 +63,10 @@ export function followersList(
 
 
 const initialFollowListState = [];
-export function followList(
+export const followList = (
     state = initialFollowListState,
     action: Actions.PutFollowListActionType
-){
+): StoreTypes.UserListType => {
     switch (action.type) {
         case Actions.PUT_FOLLOW_LIST:
             return [
@@ -67,10 +79,10 @@ export function followList(
 
 
 const initialRepoListState = [];
-export function repoList(
+export const repoList = (
     state = initialRepoListState,
     action: Actions.PutRepoListActionType
-){
+): StoreTypes.RepoListType => {
     switch (action.type) {
         case Actions.PUT_REPO_LIST:
             return [

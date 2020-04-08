@@ -2,12 +2,32 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'development',
     devtool: 'eval-source-map',
+    context: __dirname,
+    entry: {
+        main: './src/index.tsx',
+        search: './src/routes/SearchPage.tsx',
+        user: './src/routes/UserPage.tsx'
+    },
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].js',
+        chunkFilename: '[name].js',
+        publicPath: '/'
+    },
     resolve: {
         extensions: ['.tsx', '.ts', '.js']
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            maxInitialRequests: Infinity,
+            minSize: 0
+        },
     },
     module: {
         rules: [
@@ -48,10 +68,11 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src/index.html'),
             hash: true,
-            meta: { 'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no' }     
+            meta: { 'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no' }
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css',

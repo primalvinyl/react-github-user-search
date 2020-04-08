@@ -1,9 +1,10 @@
 /******************************* Store Types *************************************/
+export interface RepoType {
+    name: string;
+    description: string;
+}
 
-/**
- * TODO: Finish UserType
- * Add Followers, Following, and Repo types
-*/
+export type RepoListType = RepoType[];
 
 export interface UserType {
     login: string;
@@ -14,7 +15,7 @@ export interface UserType {
     followers: number;
     following: number;
     public_repos: number;
-};
+}
 
 export type UserListType = UserType[];
 

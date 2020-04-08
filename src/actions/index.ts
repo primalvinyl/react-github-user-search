@@ -9,7 +9,7 @@ export interface PutUserActionType {
     type: typeof PUT_USER;
     user;
 }
-export const putUser = (user): PutUserActionType => { 
+export const putUser = (user): PutUserActionType => {
     return {
         type: PUT_USER,
         user
@@ -22,7 +22,7 @@ export interface PutUserListActionType {
     type: typeof PUT_USER_LIST;
     userList;
 }
-export const putUserList = (userList): PutUserListActionType => { 
+export const putUserList = (userList): PutUserListActionType => {
     return {
         type: PUT_USER_LIST,
         userList
@@ -35,7 +35,7 @@ export interface PutFollowersListActionType {
     type: typeof PUT_FOLLOWERS_LIST;
     followersList;
 }
-export const putFollowersList = (followersList): PutFollowersListActionType => { 
+export const putFollowersList = (followersList): PutFollowersListActionType => {
     return {
         type: PUT_FOLLOWERS_LIST,
         followersList

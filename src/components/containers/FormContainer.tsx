@@ -6,13 +6,6 @@ import Input from '../presentation/Input';
 import Button from '../presentation/Button';
 import Select from '../presentation/Select';
 
-/**
- * TODO: Make search user friendly.
- * Change text input based on filter type:
- * DATE module
- * NUMBER module
-*/
-
 const FormContainer = (props: FormContainerType): JSX.Element => {
     const searchFilterList = [
         {value: 'followers', displayValue: 'Followers'},

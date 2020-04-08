@@ -2,7 +2,7 @@ import * as React from 'react';
 import ReactTable from 'react-table';
 import '../../styles/react-table.scss';
 
-const TableElement = ({ data, columns, pageSize }: TableElementType) => {
+const TableElement = ({ data, columns, pageSize }: TableElementType): JSX.Element => {
     return (
         <section className="list-container">
             <ReactTable

@@ -1,6 +1,6 @@
-import Axios, { AxiosPromise, AxiosResponse } from 'axios';
+import Axios, { AxiosPromise } from 'axios';
 
-export const getUserRequest = (endpoint: string): AxiosPromise => {
+export const getRequest = (endpoint: string): AxiosPromise => {
     return Axios({
         url: endpoint,
         method: 'GET',

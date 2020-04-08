@@ -10,23 +10,25 @@ const Input = ({
     touched,
     handleChange,
     handleBlur
-}: InputType): JSX.Element => (
-    <div className="form-group">
-        {label && (<label htmlFor={id}>{label}</label>)}
-        <input
-            type={type}
-            className="form-control"
-            id={id}
-            value={value}
-            required={required}
-            onChange={handleChange}
-            onBlur={handleBlur}
-        />
-        {errors[id] && touched[id] && (
-        <div className="form-field-error">{errors[id]}</div>
-        )}
-    </div>
-);
+}: InputType): JSX.Element => {
+    return (
+        <div className="form-group">
+            {label && (<label htmlFor={id}>{label}</label>)}
+            <input
+                type={type}
+                className="form-control"
+                id={id}
+                value={value}
+                required={required}
+                onChange={handleChange}
+                onBlur={handleBlur}
+            />
+            {errors[id] && touched[id] && (
+            <div className="form-field-error">{errors[id]}</div>
+            )}
+        </div>
+    );
+}
 
 type InputType = {
     readonly id: string;
