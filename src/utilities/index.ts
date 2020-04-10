@@ -1,9 +1,12 @@
-import Axios, { AxiosPromise } from 'axios';
+import Axios from 'axios';
 
-export const getRequest = (endpoint: string): AxiosPromise => {
-    return Axios({
+export const getRequest = async (endpoint: string, params: object): Promise<object> => {
+    const response = await Axios({
         url: endpoint,
         method: 'GET',
         baseURL: 'https://api.github.com',
+        headers: { 'Accept': 'application/vnd.github.v3+json' },
+        params: params
     });
+    return await response.data;
 };

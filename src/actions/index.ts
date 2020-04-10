@@ -1,8 +1,3 @@
-import * as StoreTypes from '../../__types__';
-
-
-
-
 /******************************* Reducer Actions *************************************/
 export const PUT_USER = 'PUT_USER';
 export interface PutUserActionType {
@@ -88,9 +83,9 @@ export const getUserData = (data: string): GetUserDataActionType => {
 export const GET_USER_LIST = 'GET_USER_LIST';
 export interface GetUserListActionType {
     type: typeof GET_USER_LIST;
-    data: StoreTypes.SearchType;
+    data: string;
 }
-export const getUserList = (data: StoreTypes.SearchType): GetUserListActionType => {
+export const getUserList = (data: string): GetUserListActionType => {
     return {
         type: GET_USER_LIST,
         data

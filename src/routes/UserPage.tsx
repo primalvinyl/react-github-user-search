@@ -1,15 +1,8 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getUserData } from '../actions';
-import { Dispatch, Action } from 'redux';
-import { AppState } from '../reducers/index';
 import TableElement from '../components/presentation/TableElement';
-
-/**
- * TODO: Tables on this page only load top 5 rows
- * should load all rows and scroll/paginate
-*/
 
 const userColumns = [
     {
@@ -36,78 +29,45 @@ const repoColumns = [
     }
 ];
 
-type UserPageProps = {
-    readonly user;
-    readonly followersList;
-    readonly followList;
-    readonly repoList;
-    readonly match;
-    readonly getUserDataDispatcher: (data: string) => void;
+const UserPage = (props): JSX.Element => {
+    const userState = useSelector(state => state.user);
+    const followersListState = useSelector(state => state.followersList);
+    const followListState = useSelector(state => state.followList);
+    const repoListState = useSelector(state => state.repoList);
+    const dispatch = useDispatch();
+
+    React.useEffect(() => {
+        const userName = props.match.params.userName;
+        const getUserDataDispatcher = userName => dispatch(getUserData(userName));
+        getUserDataDispatcher(userName);
+    }, []);
+
+    return (
+        <div className="user-page">
+            <nav>
+                <Link to={'/'}>&laquo; Go back</Link>
+            </nav>
+            <article className="user-content">
+                <section className="user-data">
+                    <img src={userState.avatar_url} alt="user avatar" />
+                    <h1><a href={userState.html_url} target="_blank" rel="noopener noreferrer">{userState.login}</a></h1>
+                </section>
+                <section className="user-followers">
+                    <h2>Followers</h2>
+                    <TableElement columns={userColumns} data={ followersListState } pageSize={5} />
+                </section>
+                <section className="user-following">
+                    <h2>Following</h2>
+                    <TableElement columns={userColumns} data={ followListState } pageSize={5} />
+                </section>
+                <section className="user-repos">
+                    <h2>Repos</h2>
+                    <TableElement columns={repoColumns} data={ repoListState } pageSize={5} />
+                </section>
+            </article> 
+        </div>
+    );
+
 };
 
-export class UserPage extends React.Component<UserPageProps> {
-    constructor(props: UserPageProps) {
-        super(props);
-    }
-
-    static defaultProps = {
-        user: {},
-        followersList: [],
-        followList: [],
-        repoList: [],
-        match: { params: { userName: '' } },
-        getUserDataDispatcher: (): void => {}
-    }
-
-    componentDidMount(): void {
-        const userName = this.props.match.params.userName;
-        this.props.getUserDataDispatcher(userName);
-    }
-
-    public render(): JSX.Element {
-        const { user, followersList, followList, repoList } = this.props;
-
-        return (
-            <div className="user-page">
-                <nav>
-                    <Link to={'/'}>&laquo; Go back</Link>
-                </nav>
-                <article className="user-content">
-                    <section className="user-data">
-                        <img src={user.avatar_url} alt="user avatar" />
-                        <h1><a href={user.html_url} target="_blank" rel="noopener noreferrer">{user.login}</a></h1>
-                    </section>
-                    <section className="user-followers">
-                        <h2>Followers</h2>
-                        <TableElement { ...this.props } columns={userColumns} data={ followersList } pageSize={5} />
-                    </section>
-                    <section className="user-following">
-                        <h2>Following</h2>
-                        <TableElement { ...this.props } columns={userColumns} data={ followList } pageSize={5} />
-                    </section>
-                    <section className="user-repos">
-                        <h2>Repos</h2>
-                        <TableElement { ...this.props } columns={repoColumns} data={ repoList } pageSize={5} />
-                    </section>
-                </article> 
-            </div>
-        );
-    }
-}
-
-const mapStateToProps = ({ user, followersList, followList, repoList }: AppState): object => {
-    return {
-        user,
-        followersList,
-        followList,
-        repoList
-    };
-};
-
-const mapDispatchToProps = (dispatch: Dispatch): object => {
-    return {
-        getUserDataDispatcher: (data: string): Action => dispatch(getUserData(data))
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserPage);
+export default UserPage;

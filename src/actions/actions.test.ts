@@ -2,7 +2,7 @@ import * as actions from '.';
 
 describe('actions', () => {
     it('getUserList returns an action object', () => {
-        const searchTerms = { searchText: 'dingo', searchFilter: 'bling' };
+        const searchTerms = 'bling';
         const expectedResult = {
             type: actions.GET_USER_LIST,
             data: searchTerms

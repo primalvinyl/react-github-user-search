@@ -7,7 +7,7 @@ describe('Get User Saga', () => {
         const sendData = 'Tucker';
         const responseData = {};
         const putData = {};
-        const mockApiMethod = () => ({ data: responseData });
+        const mockApiMethod = () => (responseData);
         return expectSaga(sagas.getUserWorker, sendData, mockApiMethod)
             .put(actions.putUser(putData))
             .run();
@@ -17,13 +17,10 @@ describe('Get User Saga', () => {
 
 describe('Get User List Saga', () => {
     it('it works', () => {
-        const sendData = {
-            searchText: 'Tucker',
-            searchFilter: 'bling'
-        };
+        const sendData = 'Tucker';
         const responseData = { items: [{}] };
         const putData = [{}];
-        const mockApiMethod = () => ({ data: responseData });
+        const mockApiMethod = () => (responseData);
         return expectSaga(sagas.getUserListWorker, sendData, mockApiMethod)
             .put(actions.putUserList(putData))
             .run();

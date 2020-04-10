@@ -1,4 +1,3 @@
-/******************************* Store Types *************************************/
 export interface RepoType {
     name: string;
     description: string;
@@ -18,12 +17,3 @@ export interface UserType {
 }
 
 export type UserListType = UserType[];
-
-
-
-
-/******************************* UI Types *************************************/
-export interface SearchType {
-    searchText: string;
-    searchFilter: string;
-}

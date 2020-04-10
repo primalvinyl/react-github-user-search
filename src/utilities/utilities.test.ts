@@ -1,5 +1,3 @@
 describe('Axios getRequest', () => {
-    it('gets data', () => {
-
-    });
+    it('gets data', () => {});
 });

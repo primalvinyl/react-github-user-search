@@ -1,24 +1,37 @@
 import * as React from 'react';
 import { Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { getUserList } from '../../actions';
 import * as yup from 'yup';
-import { SearchType } from '../../../__types__';
 import Input from '../presentation/Input';
 import Button from '../presentation/Button';
 import Select from '../presentation/Select';
 
-const FormContainer = (props: FormContainerType): JSX.Element => {
+const FormContainer = (): JSX.Element => {
     const searchFilterList = [
-        {value: 'followers', displayValue: 'Followers'},
-        {value: 'repos', displayValue: 'Repositories'},
-        {value: 'created', displayValue: 'Date Joined'}
+        {value: 'login', displayValue: 'Account Name'},
+        {value: 'followers', displayValue: ' Number of Followers'},
+        {value: 'repos', displayValue: 'Number of Repos'}
     ];
+
+    const dispatch = useDispatch();
+    const getUserListHandler = searchParams => {
+        let sendData = null;
+        const { searchFilter, searchText } = searchParams;
+        if (searchFilter === 'login') {
+            sendData = searchText;
+        } else {
+            sendData = `${searchFilter}:%3E${searchText}`;
+        }
+        dispatch(getUserList(sendData));
+    };
 
     return (
         <section className="search-form">
             <Formik
                 initialValues={{
                     searchText: '',
-                    searchFilter: 'followers'
+                    searchFilter: 'login'
                 }}
                 enableReinitialize
                 validationSchema={yup.object().shape({
@@ -27,7 +40,7 @@ const FormContainer = (props: FormContainerType): JSX.Element => {
                         .required('A search parameter is required')
                 })}
                 onSubmit={(values, { setSubmitting }): void => {
-                    props.getUserListDispatcher(values);
+                    getUserListHandler(values);
                     setSubmitting(false);
                 }}
                 render={({
@@ -70,15 +83,5 @@ const FormContainer = (props: FormContainerType): JSX.Element => {
         </section>
     );
 };
-
-type FormContainerType = {
-    readonly getUserDispatcher: (data: SearchType) => void;
-    readonly getUserListDispatcher: (data: SearchType) => void;
-};
-
-FormContainer.defaultProps = {
-    getUserDispatcher: (): void => {},
-    getUserListDispatcher: (): void => {}
-}
 
 export default FormContainer;
