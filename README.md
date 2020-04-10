@@ -1,9 +1,9 @@
 # Github User
 
-This is a basic web application that searches for Github users using the Github v3 API. It implements the following front end technologies:
+This is a web application that searches for Github users using the Github v3 API. It implements the following front end technologies:
 
 * React 16.9.x
-* Redux 4.0.x
+* Redux 7.1.x
 * Saga 1.0.x
 
 ## Requirements to Run Locally
@@ -19,8 +19,8 @@ This is a basic web application that searches for Github users using the Github 
 
 ## Notes
 
-* Basic functionality is in place, but the UI is not user friendly. Searches must be done with the knowledge of Github date/number search syntax.
-* Styling is responsive but very basic.
-* Robust error handling and user notifications are not yet implemented.
-* Unit and integration test suites are basic and incomplete.
-* End to end testing is not yet implemented.
+* Styling is responsive.
+* Robust error handling and user notifications are not implemented.
+* Paging in the tables is not implemented.
+* Unit and integration test suites are incomplete.
+* Code-splitting needs work.
