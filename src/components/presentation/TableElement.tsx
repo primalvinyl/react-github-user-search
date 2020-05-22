@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ReactTable from 'react-table';
-import '../../styles/react-table.scss';
+import './TableElement.module.css';
 
 const TableElement = ({ data, columns, pageSize }: TableElementType): JSX.Element => {
     return (

@@ -1,4 +1,8 @@
+import { createStore, applyMiddleware } from 'redux';
 import { combineReducers } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import rootSaga from '../sagas';
 import * as Actions from '../actions';
 import * as StoreTypes from '../../__types__';
 
@@ -94,12 +98,18 @@ export const repoList = (
 }
 
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
     user,
     userList,
     followersList,
     followList,
     repoList
 });
-export type AppState = ReturnType<typeof rootReducer>;
-export default rootReducer;
+
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(rootReducer, composeWithDevTools(
+    applyMiddleware(sagaMiddleware)
+));
+sagaMiddleware.run(rootSaga);
+export default store;
