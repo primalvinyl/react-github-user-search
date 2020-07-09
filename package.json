@@ -1,8 +1,26 @@
 {
     "name": "github_users",
     "version": "0.0.1",
-    "author": "Robert Page",
+    "author": "Robert",
     "private": true,
+    "description": "Github user search. A React application using Github API v3.",
+    "keywords": ["react", "typescript", "redux", "redux-saga"],
+    "homepage": "https://github.com/primalvinyl/react-github-user-search#readme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/primalvinyl/react-github-user-search"
+    },
+    "bugs": "https://github.com/primalvinyl/react-github-user-search/issues",
+    "scripts": {
+        "build": "webpack --mode production",
+        "build:clean": "rimraf dist",
+        "start": "webpack-dev-server --mode development",
+        "test": "jest",
+        "test:clean": "jest --clearCache",
+        "lint": "./node_modules/.bin/eslint \"src/**\"",
+        "lint:clean": "./node_modules/.bin/eslint \"src/**\" --fix",
+        "message-pre-commit": "echo 'Pre-commit tests are running...' && exit 0"
+    },
     "devDependencies": {
         "@babel/core": "7.5.5",
         "@babel/plugin-proposal-class-properties": "7.5.5",
@@ -56,16 +74,6 @@
         "redux-devtools-extension": "2.13.8",
         "redux-saga": "1.0.5",
         "yup": "0.27.0"
-    },
-    "scripts": {
-        "build": "webpack --mode production",
-        "build:clean": "rimraf dist",
-        "start": "webpack-dev-server --mode-development",
-        "test": "jest",
-        "test:clean": "jest --clearCache",
-        "lint": "./node_modules/.bin/eslint \"src/**\"",
-        "lint:clean": "./node_modules/.bin/eslint \"src/**\" --fix",
-        "message-pre-commit": "echo 'Pre-commit tests are running...' && exit 0"
     },
     "pre-commit": {
         "run": [

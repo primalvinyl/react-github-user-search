@@ -7,3 +7,4 @@
 **/jest.config.js
 **/babel.config.js
 **/index.html
+**/*.module.scss

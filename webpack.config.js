@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-module.exports = {
+const baseConfig = {
     mode: 'development',
     devtool: 'eval-source-map',
     context: __dirname,
@@ -48,8 +48,11 @@ module.exports = {
                 use: [
                     'style-loader',
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader'
+                    {
+                        loader: 'css-loader',
+                        options: { modules: true }
+                    },
+                    'sass-loader',
                 ]
             },
             {
@@ -85,4 +88,10 @@ module.exports = {
         hot: true,
         watchContentBase: true
     }
+};
+
+module.exports = (env, argv) => {
+    let config = baseConfig;
+    console.log(argv);
+    return config;
 };

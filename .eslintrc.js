@@ -29,10 +29,10 @@ module.exports = {
     ],
     "settings": {
         "react": {
-        "createClass": "createReactClass",
-        "pragma": "React",
-        "version": "detect",
-        "flowVersion": "0.53"
+            "createClass": "createReactClass",
+            "pragma": "React",
+            "version": "detect",
+            "flowVersion": "0.53"
         },
         "propWrapperFunctions": [
             "forbidExtraProps",
