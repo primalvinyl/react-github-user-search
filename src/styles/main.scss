@@ -1,6 +1,6 @@
-@import 'partials/variables';
-@import 'partials/mixins';
-@import 'partials/base';
+@import './partials/variables';
+@import './partials/mixins';
+@import './partials/base';
 
 header {
     background: $gray-800;

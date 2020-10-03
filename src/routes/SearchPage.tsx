@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import FormContainer from '../components/containers/FormContainer';
-import TableElement from '../components/presentation/TableElement';
+import FormContainer from '../components/FormContainer';
+import TableElement from '../components/TableElement';
 
 const searchPageColumns = [
     {

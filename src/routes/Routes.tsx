@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Fallback from '../components/presentation/Fallback';
+import Fallback from './Fallback';
 const SearchPage = React.lazy(() => import('./SearchPage'));
 const UserPage = React.lazy(() => import('./UserPage'));
 
