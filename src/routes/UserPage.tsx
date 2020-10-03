@@ -2,32 +2,7 @@ import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getUserData } from '../actions';
-import TableElement from '../components/TableElement';
-
-const userColumns = [
-    {
-        Header: 'Avatar',
-        accessor: 'avatar_url',
-        Cell: row => <img src={row.value} />
-    },
-    {
-        Header: 'Account Name',
-        accessor: 'login',
-        Cell: row => <a href={row.original.html_url} target="_blank" rel="noopener noreferrer">{row.value}</a>
-    }
-];
-
-const repoColumns = [
-    {
-        Header: 'Name',
-        accessor: 'name',
-        Cell: row => <a href={row.original.html_url} target="_blank" rel="noopener noreferrer">{row.value}</a>
-    },
-    {
-        Header: 'Description',
-        accessor: 'description'
-    }
-];
+import TableComponent from '../components/TableComponent';
 
 const UserPage = (props): JSX.Element => {
     const userState = useSelector(state => state.user);
@@ -35,6 +10,33 @@ const UserPage = (props): JSX.Element => {
     const followListState = useSelector(state => state.followList);
     const repoListState = useSelector(state => state.repoList);
     const dispatch = useDispatch();
+
+    const userColumns = React.useMemo(() => [
+        {
+            Header: 'Avatar',
+            accessor: 'avatar_url',
+            Cell: table => <img src={table.value} />
+        },
+        {
+            Header: 'Account Name',
+            accessor: 'login',
+            Cell: table => {
+                return <a href={table.row.original.html_url} target="_blank" rel="noopener noreferrer">{table.value}</a>
+            }
+        }
+    ], []);
+    
+    const repoColumns = React.useMemo(() => [
+        {
+            Header: 'Name',
+            accessor: 'name',
+            Cell: table => <a href={table.row.original.html_url} target="_blank" rel="noopener noreferrer">{table.value}</a>
+        },
+        {
+            Header: 'Description',
+            accessor: 'description'
+        }
+    ], []);
 
     React.useEffect(() => {
         const userName = props.match.params.userName;
@@ -54,20 +56,19 @@ const UserPage = (props): JSX.Element => {
                 </section>
                 <section className="user-followers">
                     <h2>Followers</h2>
-                    <TableElement columns={userColumns} data={ followersListState } pageSize={5} />
+                    <TableComponent columns={userColumns} data={ followersListState } pageSize={5} />
                 </section>
                 <section className="user-following">
                     <h2>Following</h2>
-                    <TableElement columns={userColumns} data={ followListState } pageSize={5} />
+                    <TableComponent columns={userColumns} data={ followListState } pageSize={5} />
                 </section>
                 <section className="user-repos">
                     <h2>Repos</h2>
-                    <TableElement columns={repoColumns} data={ repoListState } pageSize={5} />
+                    <TableComponent columns={repoColumns} data={ repoListState } pageSize={5} />
                 </section>
             </article> 
         </div>
     );
-
 };
 
 export default UserPage;

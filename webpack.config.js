@@ -1,13 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'development',
     devtool: 'eval-source-map',
-    context: __dirname,
     entry: {
         main: './src/index.tsx',
         search: './src/routes/SearchPage.tsx',
@@ -20,7 +18,7 @@ module.exports = {
         publicPath: '/'
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js']
+        extensions: ['.tsx', '.ts', '.jsx', '.js']
     },
     optimization: {
         splitChunks: {
@@ -33,28 +31,23 @@ module.exports = {
         rules: [
             {
                 test: /\.ts(x?)$/,
-                exclude: /node_modules/,
                 use: 'ts-loader'
             },
             {
                 test: /\.js(x?)$/,
-                exclude: /node_modules/,
                 include: [__dirname],
                 use: 'babel-loader'
             },
             {
                 test: /\.(scss|sass|css)$/,
-                exclude: /node_modules/,
                 use: [
                     'style-loader',
-                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     'sass-loader',
                 ]
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
-                exclude: /node_modules/,
                 use: [
                     {
                         loader: 'url-loader',
@@ -74,15 +67,11 @@ module.exports = {
             hash: true,
             meta: { 'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no' }
         }),
-        new MiniCssExtractPlugin({
-            filename: '[name].css',
-            chunkFilename: '[id].css'
-        })
     ],
     devServer: {
-        contentBase: './dist',
         historyApiFallback: true,
         hot: true,
-        watchContentBase: true
+        watchContentBase: true,
+        inline: true
     }
 };

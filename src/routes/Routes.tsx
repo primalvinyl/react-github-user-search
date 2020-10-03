@@ -1,25 +1,22 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Fallback from './Fallback';
-const SearchPage = React.lazy(() => import('./SearchPage'));
-const UserPage = React.lazy(() => import('./UserPage'));
+import SearchPage from './SearchPage';
+import UserPage from './UserPage';
 
 const Routes = (): JSX.Element => {
     return (
         <BrowserRouter>
-            <Suspense fallback={<Fallback/>}>
-                <Switch>
-                    <Route
-                        exact
-                        path={'/'}
-                        component={SearchPage}
-                    />
-                    <Route
-                        path={'/:userName'}
-                        component={UserPage}
-                    />
-                </Switch>
-            </Suspense>
+            <Switch>
+                <Route
+                    exact
+                    path={'/'}
+                    component={SearchPage}
+                />
+                <Route
+                    path={'/:userName'}
+                    component={UserPage}
+                />
+            </Switch>
         </BrowserRouter>
     )
 }
