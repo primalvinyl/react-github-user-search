@@ -1,6 +1,6 @@
 import { expectSaga } from 'redux-saga-test-plan';
-import * as sagas from '../src/sagas';
-import * as actions from '../src/actions';
+import * as sagas from '../src/store/sagas';
+import * as actions from '../src/store/actions';
 
 describe('Get User Saga', () => {
     it('it works', () => {

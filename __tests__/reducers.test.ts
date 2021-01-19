@@ -1,5 +1,5 @@
-import * as reducers from '../src/reducers';
-import * as actions from '../src/actions';
+import * as reducers from '../src/store/reducers';
+import * as actions from '../src/store/actions';
 
 describe('User Reducer', () => {
     it('should put a new user', () => {

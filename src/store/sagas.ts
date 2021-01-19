@@ -9,7 +9,7 @@ import {
     putFollowersList,
     putFollowList,
     putRepoList } from './actions';
-import { getRequest } from './utilities';
+import { getRequest } from './services';
 
 
 /******************************** Workers *************************************/

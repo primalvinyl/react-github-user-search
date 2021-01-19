@@ -1,4 +1,4 @@
-import * as actions from '../src/actions';
+import * as actions from '../src/store/actions';
 
 describe('actions', () => {
     it('getUserList returns an action object', () => {

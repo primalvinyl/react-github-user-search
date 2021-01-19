@@ -12,7 +12,7 @@ module.exports = {
         user: './src/routes/UserPage.tsx'
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'build'),
         filename: '[name].js',
         chunkFilename: '[name].js',
         publicPath: '/'
@@ -72,6 +72,7 @@ module.exports = {
         historyApiFallback: true,
         hot: true,
         watchContentBase: true,
-        inline: true
+        inline: true,
+        port: 3000
     }
 };

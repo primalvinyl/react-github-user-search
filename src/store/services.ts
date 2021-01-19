@@ -5,7 +5,10 @@ export const getRequest = async (endpoint: string, params: object): Promise<obje
         url: endpoint,
         method: 'GET',
         baseURL: 'https://api.github.com',
-        headers: { 'Accept': 'application/vnd.github.v3+json' },
+        headers: {
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+        },
         params: params
     });
     return await response.data;

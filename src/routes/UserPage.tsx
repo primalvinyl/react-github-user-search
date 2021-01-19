@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getUserData } from '../actions';
+import { getUserData } from '../store/actions';
 import TableComponent from '../components/TableComponent';
 
 const UserPage = (props): JSX.Element => {

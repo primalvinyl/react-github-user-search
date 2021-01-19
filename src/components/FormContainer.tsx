@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { getUserList } from '../actions';
+import { getUserList } from '../store/actions';
 import * as yup from 'yup';
 import Input from './Input';
 import Button from './Button';

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import store from './reducers';
+import store from './store';
 import { IntlProvider } from 'react-intl';
 import messagesEnUs from './locales/en-US.json';
 import messagesFrFr from './locales/fr-FR.json';
